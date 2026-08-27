@@ -1,69 +1,44 @@
-{
-  "updatedAt": "2026-08-27T15:35:21.115Z",
-  "successCount": 1,
-  "total": 10,
-  "results": {
-    "lao_extra": {
-      "type": "lotto",
-      "source": "https://laoextra.com/",
-      "ok": false,
-      "error": "ไม่พบเลข 5 หลัก"
-    },
-    "nikkei_vip": {
-      "type": "stock",
-      "source": "https://stocks-vip.com/",
-      "ok": false,
-      "error": "ไม่พบค่าดัชนี"
-    },
-    "nikkei_morning": {
-      "type": "stock",
-      "value": "37,086.26",
-      "display": "37,086.26",
-      "change": "-2.38",
-      "source": "https://indexes.nikkei.co.jp/en/nkave",
-      "ok": true
-    },
-    "hanoi_asean": {
-      "type": "lotto",
-      "source": "https://hanoiasean.com/",
-      "ok": false,
-      "error": "ไม่พบเลข 5 หลัก"
-    },
-    "china_vip": {
-      "type": "stock",
-      "source": "https://shenzhenindex.com/",
-      "ok": false,
-      "error": "ไม่พบค่าดัชนี"
-    },
-    "china_morning": {
-      "type": "stock",
-      "source": "http://www.szse.cn/English/index.html",
-      "ok": false,
-      "error": "fetch failed"
-    },
-    "lao_tv": {
-      "type": "lotto",
-      "source": "https://lao-tv.com/",
-      "ok": false,
-      "error": "ไม่พบเลข 5 หลัก"
-    },
-    "hangseng_vip": {
-      "type": "stock",
-      "source": "https://hangsengvip.com/",
-      "ok": false,
-      "error": "fetch failed"
-    },
-    "hangseng_morning": {
-      "type": "stock",
-      "source": "https://www.hsi.com.hk/eng",
-      "ok": false,
-      "error": "ไม่พบค่าดัชนี"
-    },
-    "hanoi_hd": {
-      "type": "lotto",
-      "source": "https://xosohd.com/",
-      "ok": false,
-      "error": "ไม่พบเลข 5 หลัก"
-    }
-  }
-}
+name: Update live lottery results
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: live-lottery-update
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Playwright
+        run: npm install playwright@1.55.0
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Fetch live results
+        run: node scraper.js
+
+      - name: Commit results.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results.json
+          git diff --cached --quiet || git commit -m "Update live results"
+          git push
