@@ -3,122 +3,455 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#780000">
+<meta name="theme-color" content="#8b0000">
 <title>ไลฟ์สด กระดานเช้า</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(#4b0000,#1c0000);font-family:Prompt,sans-serif;color:#fff}
-.page{max-width:1600px;margin:auto;padding:10px}
-.header{background:linear-gradient(#8b0000,#c40000,#680000);border:2px solid #ff5252;border-radius:18px;padding:12px;box-shadow:0 0 16px #f00}
-.hero{display:flex;align-items:center;justify-content:center;gap:15px}
-.live{background:#d60000;border:2px solid #ff9999;border-radius:16px;padding:8px 16px;font-size:26px;font-weight:900}
-h1{margin:0;font-size:clamp(36px,5vw,72px);font-weight:900;text-shadow:0 0 12px #f00}
-h1 span{color:#ffd94a}
-.ticker{margin-top:8px;background:#9c0000;border:2px solid #ff5a5a;border-radius:999px;padding:7px 16px;text-align:center;font-weight:700;color:#fff}
-.status{display:flex;justify-content:space-between;gap:10px;margin:10px 4px;font-size:13px;color:#ffdada}
-.board{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.card{background:linear-gradient(#bd0000,#790000);border:2px solid #ff5555;border-radius:14px;padding:9px;box-shadow:0 0 10px rgba(255,0,0,.8)}
-.head{display:grid;grid-template-columns:56px 1fr;gap:8px;align-items:center}
-.flag{width:56px;height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:35px}
-.name{font-size:clamp(17px,2vw,27px);font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tag{color:#ffe34b}.time{font-size:12px;color:#ffdada}
-.screen{margin-top:8px;min-height:115px;background:#fff;border-radius:10px;color:#222;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px}
-.screen.blue{background:#075784;color:#fff}
-.small{font-size:11px;opacity:.7;text-align:center}
-.value{font-family:Arial,sans-serif;font-size:clamp(27px,3vw,44px);font-weight:700;text-align:center}
-.focus{display:inline-block;border:3px solid #d81818;padding:0 3px;background:rgba(255,255,255,.7);color:#222}
-.result{display:grid;grid-template-columns:1fr .72fr;gap:8px;margin-top:8px}
-.box{background:#fff;color:#111;border-radius:8px;min-height:52px;display:grid;place-items:center;font:900 clamp(24px,3vw,40px)/1 Arial,sans-serif}
-.box.done{color:#d00000}
-.source{display:block;text-align:center;margin-top:6px;font-size:10px;color:#ffd6d6;text-decoration:none}
-.footer{margin-top:12px;background:linear-gradient(#b60000,#650000);border:2px solid #ff5555;border-radius:14px;padding:8px 14px;display:grid;grid-template-columns:250px 1fr;gap:12px;align-items:center}
-.clock{background:#fff;color:#222;border-radius:8px;padding:8px;text-align:center;font:800 40px Arial,sans-serif}
-.msg{font-size:clamp(15px,2vw,27px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-@media(max-width:1100px){.board{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:760px){.board{grid-template-columns:repeat(2,1fr);gap:7px}.page{padding:6px}.header{padding:8px}.live{font-size:14px;padding:6px 10px}h1{font-size:30px}.head{grid-template-columns:42px 1fr}.flag{width:42px;height:42px;font-size:27px}.name{font-size:15px}.screen{min-height:88px}.value{font-size:26px}.box{min-height:42px;font-size:24px}.footer{grid-template-columns:1fr}.clock{font-size:30px}.msg{text-align:center;font-size:12px}}
+:root{
+  --red1:#ff160d;
+  --red2:#b80000;
+  --red3:#6f0000;
+  --gold:#ffd33d;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Prompt",sans-serif}
+body{
+  color:#fff;
+  background:
+    radial-gradient(circle at 83% 7%,rgba(255,68,68,.22),transparent 19%),
+    radial-gradient(circle at 18% 8%,rgba(255,255,255,.08),transparent 23%),
+    linear-gradient(180deg,#6d0000 0%,#b00000 42%,#4d0000 100%);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;opacity:.15;
+  background-image:
+    linear-gradient(110deg,transparent 0 48%,rgba(255,255,255,.25) 49%,transparent 50%),
+    linear-gradient(70deg,transparent 0 48%,rgba(255,255,255,.18) 49%,transparent 50%);
+  background-size:110px 110px,140px 140px;
+}
+.page{width:min(1640px,100%);margin:auto;padding:14px 18px 12px}
+.top{
+  position:relative;
+  padding:10px 10px 7px;
+  border-radius:20px;
+}
+.hero{
+  min-height:105px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:22px;
+  text-align:center;
+}
+.live{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 20px 9px;
+  border:3px solid #ff7777;
+  border-radius:16px;
+  font:900 29px/1 Arial,sans-serif;
+  background:linear-gradient(#ff1b1b,#a90000);
+  box-shadow:0 0 10px #fff,0 0 24px #ff1b1b,inset 0 0 10px rgba(255,255,255,.55);
+}
+.live .play{
+  width:30px;height:30px;border-radius:50%;background:#fff;color:#e00000;
+  display:grid;place-items:center;font-size:18px;padding-left:2px
+}
+h1{
+  margin:0;
+  font-size:clamp(44px,5.7vw,82px);
+  line-height:1;
+  font-weight:900;
+  font-style:italic;
+  letter-spacing:-2px;
+  text-shadow:0 3px 0 #7a0000,0 0 8px #fff,0 0 16px #ff0000;
+}
+h1 .gold{color:#ffd84d;text-shadow:0 3px 0 #8a4c00,0 0 7px #fff,0 0 15px #ff8a00}
+.market-strip{
+  margin:0 auto 12px;
+  width:min(1260px,96%);
+  padding:8px 20px;
+  border:3px solid #ff5a5a;
+  border-radius:999px;
+  background:linear-gradient(#c71818,#760000);
+  box-shadow:0 0 10px #ff2b2b,inset 0 0 12px rgba(255,255,255,.18);
+  font-size:clamp(13px,1.45vw,21px);
+  font-weight:800;
+  text-align:center;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.market-strip .gold{color:#ffd92f}
+.board{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+}
+.card{
+  min-width:0;
+  padding:9px 10px 8px;
+  border:3px solid #ff6767;
+  border-radius:17px;
+  background:linear-gradient(180deg,#d30c0c 0%,#930000 65%,#6d0000 100%);
+  box-shadow:0 0 10px rgba(255,255,255,.75),0 0 18px rgba(255,0,0,.85),inset 0 0 10px rgba(255,255,255,.16);
+}
+.card-head{
+  height:86px;
+  display:grid;
+  grid-template-columns:70px minmax(0,1fr);
+  gap:10px;
+  align-items:center;
+}
+.flag{
+  width:70px;height:70px;border-radius:12px;
+  background:#fff;
+  display:grid;place-items:center;
+  font-size:47px;
+  overflow:hidden;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.55);
+}
+.flag .asean{
+  width:52px;height:52px;border-radius:9px;
+  background:#135ba4;color:#ffd02a;font-size:25px;
+  display:grid;place-items:center;
+}
+.title{min-width:0}
+.name{
+  font-size:clamp(18px,1.75vw,29px);
+  font-weight:900;
+  line-height:1.03;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  text-shadow:0 2px 2px #5a0000;
+}
+.tag{color:var(--gold)}
+.draw{
+  margin-top:6px;
+  font-size:clamp(11px,1vw,16px);
+  font-weight:700;
+  white-space:nowrap
+}
+.draw b{color:#ffe138}
+.screen{
+  height:125px;
+  border-radius:13px;
+  background:#fff;
+  color:#222;
+  overflow:hidden;
+  border:2px solid rgba(92,0,0,.3);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  padding:8px 10px;
+}
+.screen.blue{
+  background:linear-gradient(180deg,#1973b0,#0f4f7d);
+  color:#fff;
+}
+.screen .line1{
+  font:400 clamp(14px,1.45vw,25px)/1.1 Arial,sans-serif;
+  opacity:.8;
+}
+.screen .stock{
+  font:500 clamp(31px,3vw,47px)/1.06 Arial,sans-serif;
+  text-align:center;
+  white-space:nowrap;
+}
+.screen .stock .focus,
+.screen .number5 .focus{
+  display:inline-block;
+  padding:0 2px;
+  border:3px solid #d00000;
+  line-height:.95;
+  background:rgba(255,255,255,.12);
+}
+.screen .number5{
+  font:600 clamp(32px,3vw,49px)/1 Arial,sans-serif;
+  text-align:center;
+  letter-spacing:7px;
+}
+.screen .sub{
+  margin-top:9px;
+  font:400 clamp(10px,.9vw,14px)/1.1 Arial,sans-serif;
+  opacity:.72;
+  text-align:center;
+}
+.screen .change{
+  margin-top:6px;
+  font:500 clamp(10px,.95vw,15px)/1 Arial,sans-serif;
+  text-align:center;
+  opacity:.9;
+}
+.result{
+  display:grid;
+  grid-template-columns:1fr .72fr;
+  gap:9px;
+  margin-top:8px;
+}
+.result-box{
+  height:58px;
+  background:#fff;
+  color:#080808;
+  border-radius:10px;
+  display:grid;place-items:center;
+  font:900 clamp(30px,3vw,47px)/1 Arial,sans-serif;
+  letter-spacing:1px;
+  box-shadow:inset 0 0 0 1px #d0d0d0;
+}
+.result-box.done{
+  color:#090909;
+  text-shadow:
+    -1px -1px 0 #f22,
+    1px -1px 0 #f22,
+    -1px 1px 0 #f22,
+    1px 1px 0 #f22;
+}
+.meta{
+  display:none;
+}
+.footer{
+  margin-top:12px;
+  padding:8px 12px;
+  min-height:82px;
+  border:3px solid #ff5d5d;
+  border-radius:17px;
+  background:linear-gradient(#bf0d0d,#7b0000);
+  box-shadow:0 0 12px #ff2626,inset 0 0 12px rgba(255,255,255,.18);
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:12px;
+  align-items:center;
+}
+.clock{
+  height:61px;
+  background:#fff;
+  color:#222;
+  border-radius:10px;
+  display:grid;place-items:center;
+  font:800 42px/1 Arial,sans-serif;
+  letter-spacing:1px;
+}
+.msg{
+  font-size:clamp(16px,2.1vw,30px);
+  font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.statusline{
+  position:fixed;right:9px;bottom:4px;z-index:3;
+  font-size:9px;color:rgba(255,255,255,.45)
+}
+@media(max-width:1200px){
+  .board{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .page{padding:7px}
+  .hero{min-height:74px;gap:8px}
+  .live{font-size:14px;padding:6px 9px;border-width:2px}
+  .live .play{width:20px;height:20px;font-size:11px}
+  h1{font-size:30px;letter-spacing:-1px}
+  .market-strip{width:100%;font-size:11px;padding:6px 9px;margin-bottom:7px}
+  .board{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .card{padding:6px;border-width:2px;border-radius:12px}
+  .card-head{height:58px;grid-template-columns:45px minmax(0,1fr);gap:6px}
+  .flag{width:45px;height:45px;font-size:30px;border-radius:8px}
+  .flag .asean{width:36px;height:36px;font-size:17px}
+  .name{font-size:14px}
+  .draw{font-size:9px;margin-top:3px}
+  .screen{height:85px;border-radius:8px;padding:5px}
+  .screen .stock,.screen .number5{font-size:24px;letter-spacing:2px}
+  .screen .line1{font-size:11px}
+  .screen .sub,.screen .change{font-size:8px;margin-top:4px}
+  .result{gap:5px;margin-top:5px}
+  .result-box{height:41px;font-size:25px;border-radius:7px}
+  .footer{grid-template-columns:125px 1fr;gap:6px;min-height:55px;padding:5px;border-width:2px}
+  .clock{height:42px;font-size:24px}
+  .msg{font-size:11px}
+}
 </style>
 </head>
 <body>
 <main class="page">
-<section class="header">
-  <div class="hero"><div class="live">▶ LIVE</div><h1><span>ไลฟ์สด</span> กระดานเช้า</h1></div>
-  <div class="ticker">ลาว EXTRA / นิเคอิเช้า VIP / นิเคอิเช้า / ฮานอยอาเซียน / จีนเช้า VIP / จีนเช้า / ลาว TV / ฮั่งเส็งเช้า VIP / ฮั่งเส็งเช้า / ฮานอย HD</div>
-</section>
+  <section class="top">
+    <div class="hero">
+      <div class="live"><span class="play">▶</span> LIVE</div>
+      <h1><span class="gold">ไลฟ์สด</span> กระดานเช้า</h1>
+    </div>
+    <div class="market-strip">
+      ▶ LIVE&nbsp;&nbsp;
+      ลาว<span class="gold">EXTRA</span> /
+      นิเคอิเช้า<span class="gold">VIP</span> /
+      นิเคอิเช้า /
+      ฮานอยอาเซียน /
+      จีนเช้า<span class="gold">VIP</span> /
+      จีนเช้า /
+      ลาว<span class="gold">TV</span> /
+      ฮั่งเส็งเช้า<span class="gold">VIP</span> /
+      ฮั่งเส็งเช้า /
+      ฮานอย<span class="gold">HD</span>
+    </div>
+  </section>
 
-<div class="status"><span id="status">กำลังโหลดผล...</span><span id="updated">-</span></div>
-<section class="board" id="board"></section>
+  <section class="board" id="board"></section>
 
-<footer class="footer">
-  <div class="clock" id="clock">00:00:00</div>
-  <div class="msg">❤️ ยินดีกับทุกท่านที่ถูกรางวัล</div>
-</footer>
+  <footer class="footer">
+    <div class="clock" id="clock">00:00:00</div>
+    <div class="msg">เว็บ ❤️ ฝากกดไลค์-ติดตามช่อง ❤️ เพื่อเป็นกำลังใจให้แอดด้วยนะครับบบ</div>
+  </footer>
 </main>
+
+<div class="statusline"><span id="status">กำลังโหลด...</span> · <span id="updated">-</span></div>
 
 <script>
 const INFO = {
-  lao_extra:{flag:"🇱🇦",name:"ลาว",tag:"Extra",close:"08:25",draw:"08:30"},
-  nikkei_vip:{flag:"🇯🇵",name:"นิเคอิเช้า",tag:"VIP",close:"09:00",draw:"09:05"},
-  nikkei_morning:{flag:"🇯🇵",name:"นิเคอิเช้า",tag:"",close:"09:25",draw:"09:30"},
-  hanoi_asean:{flag:"🌐",name:"ฮานอยอาเซียน",tag:"",close:"09:10",draw:"09:30"},
-  china_vip:{flag:"🇨🇳",name:"จีนเช้า",tag:"VIP",close:"10:00",draw:"10:05"},
-  china_morning:{flag:"🇨🇳",name:"จีนเช้า",tag:"",close:"10:20",draw:"10:30"},
-  lao_tv:{flag:"🇱🇦",name:"ลาว",tag:"TV",close:"10:25",draw:"10:30"},
-  hangseng_vip:{flag:"🇭🇰",name:"ฮั่งเส็งเช้า",tag:"VIP",close:"10:30",draw:"10:35"},
-  hangseng_morning:{flag:"🇭🇰",name:"ฮั่งเส็งเช้า",tag:"",close:"10:55",draw:"11:00"},
-  hanoi_hd:{flag:"🇻🇳",name:"ฮานอย",tag:"HD",close:"11:10",draw:"11:30"}
+  lao_extra:{
+    flag:"🇱🇦",name:"ลาว",tag:"Extra",draw:"08:30",
+    kind:"lotto"
+  },
+  nikkei_vip:{
+    flag:"🇯🇵",name:"นิเคอิเช้า",tag:"VIP",draw:"09:05",
+    kind:"stock",blue:true
+  },
+  nikkei_morning:{
+    flag:"🇯🇵",name:"นิเคอิเช้า",tag:"",draw:"09:30",
+    kind:"stock",blue:true
+  },
+  hanoi_asean:{
+    flag:"ASEAN",name:"ฮานอยอาเซียน",tag:"",draw:"09:30",
+    kind:"lotto"
+  },
+  china_vip:{
+    flag:"🇨🇳",name:"จีนเช้า",tag:"VIP",draw:"10:05",
+    kind:"stock"
+  },
+  china_morning:{
+    flag:"🇨🇳",name:"จีนเช้า",tag:"",draw:"10:30",
+    kind:"stock"
+  },
+  lao_tv:{
+    flag:"🇱🇦",name:"ลาว",tag:"TV",draw:"10:30",
+    kind:"lotto"
+  },
+  hangseng_vip:{
+    flag:"🇭🇰",name:"ฮั่งเส็งเช้า",tag:"VIP",draw:"10:35",
+    kind:"stock"
+  },
+  hangseng_morning:{
+    flag:"🇭🇰",name:"ฮั่งเส็งเช้า",tag:"",draw:"11:00",
+    kind:"stock"
+  },
+  hanoi_hd:{
+    flag:"🇻🇳",name:"ฮานอย",tag:"HD",draw:"11:30",
+    kind:"lotto"
+  }
 };
+
 const ORDER = Object.keys(INFO);
 
-function last2(v){
- const s=String(v||"");
- if(!s)return "---";
- if(s.length<3)return s;
- return s.slice(0,-2)+'<span class="focus">'+s.slice(-2)+'</span>';
+function esc(v){
+  return String(v ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;");
+}
+
+function highlightLast2(value){
+  const s=esc(value);
+  if(!s) return "---";
+  const dot=s.lastIndexOf(".");
+  if(dot>=0 && s.length-dot>=3){
+    return s.slice(0,dot+1)+'<span class="focus">'+s.slice(dot+1,dot+3)+'</span>'+s.slice(dot+3);
+  }
+  const digits=s.replace(/\D/g,"");
+  if(digits.length===5){
+    return s.slice(0,-2)+'<span class="focus">'+s.slice(-2)+'</span>';
+  }
+  return s;
+}
+
+function flagHTML(flag){
+  if(flag==="ASEAN") return '<div class="asean">🌾</div>';
+  return flag;
+}
+
+function screenHTML(key,info,r){
+  const display = r.display || r.value || "";
+  const change = r.change || "";
+  const prev = r.prevClose || r.previousClose || "";
+
+  if(info.kind==="lotto"){
+    return `
+      <div class="screen">
+        <div class="line1">${r.dateText ? esc(r.dateText) : "งวดประจำวันที่ล่าสุด"}</div>
+        <div class="number5">${highlightLast2(display)}</div>
+        <div class="sub">${r.drawText ? esc(r.drawText) : "ออกผลเวลา "+info.draw}</div>
+      </div>`;
+  }
+
+  return `
+    <div class="screen ${info.blue ? "blue" : ""}">
+      <div class="line1">${r.label ? esc(r.label) : ""}</div>
+      <div class="stock">${highlightLast2(display)}</div>
+      <div class="change">${change ? esc(change) : ""}</div>
+      ${prev ? `<div class="sub">Prev.Close ${esc(prev)}</div>` : `<div class="sub">ข้อมูลตลาดล่าสุด</div>`}
+    </div>`;
 }
 
 function render(data={}){
- document.getElementById("board").innerHTML=ORDER.map(k=>{
-   const i=INFO[k], r=data[k]||{}, three=r.three||"XXX", two=r.two||"XX";
-   return `<article class="card">
-     <div class="head">
-       <div class="flag">${i.flag}</div>
-       <div><div class="name">${i.name}<span class="tag">${i.tag}</span></div><div class="time">ปิด ${i.close} · ออก ${i.draw} น.</div></div>
-     </div>
-     <div class="screen ${k==="nikkei_vip"?"blue":""}">
-       <div class="small">${r.ok ? "ข้อมูลล่าสุดจากเว็บต้นทาง" : "รอผล / กำลังอัปเดต"}</div>
-       <div class="value">${last2(r.display||r.value||"")}</div>
-       <div class="small">${r.change||""}</div>
-     </div>
-     <div class="result">
-       <div class="box ${three!=="XXX"?"done":""}">${three}</div>
-       <div class="box ${two!=="XX"?"done":""}">${two}</div>
-     </div>
-     <a class="source" target="_blank" rel="noopener" href="${r.source||"#"}">ดูเว็บต้นทาง ↗</a>
-   </article>`;
- }).join("");
+  document.getElementById("board").innerHTML=ORDER.map(key=>{
+    const info=INFO[key];
+    const r=data[key]||{};
+    const three=r.three||"---";
+    const two=r.two||"--";
+    return `
+      <article class="card">
+        <div class="card-head">
+          <div class="flag">${flagHTML(info.flag)}</div>
+          <div class="title">
+            <div class="name">${info.name}<span class="tag">${info.tag}</span></div>
+            <div class="draw">ออกผล <b>${info.draw}</b> น.</div>
+          </div>
+        </div>
+        ${screenHTML(key,info,r)}
+        <div class="result">
+          <div class="result-box ${r.ok ? "done":""}">${esc(three)}</div>
+          <div class="result-box ${r.ok ? "done":""}">${esc(two)}</div>
+        </div>
+      </article>`;
+  }).join("");
 }
 
 async function loadResults(){
- try{
-   const r=await fetch("./results.json?ts="+Date.now(),{cache:"no-store"});
-   if(!r.ok)throw new Error("results.json");
-   const j=await r.json();
-   render(j.results||{});
-   document.getElementById("status").textContent=`อัปเดตสำเร็จ ${j.successCount||0}/${j.total||10} แหล่ง`;
-   document.getElementById("updated").textContent="ข้อมูล "+new Date(j.updatedAt).toLocaleString("th-TH");
- }catch(e){
-   document.getElementById("status").textContent="ยังไม่มี results.json หรือกำลังอัปเดต";
- }
+  try{
+    const res=await fetch("./results.json?ts="+Date.now(),{cache:"no-store"});
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    const json=await res.json();
+    render(json.results||{});
+    document.getElementById("status").textContent=`อัปเดต ${json.successCount||0}/${json.total||10}`;
+    document.getElementById("updated").textContent=new Date(json.updatedAt).toLocaleString("th-TH");
+  }catch(err){
+    document.getElementById("status").textContent="รอผล";
+    document.getElementById("updated").textContent="";
+  }
 }
-function tick(){document.getElementById("clock").textContent=new Date().toLocaleTimeString("th-TH",{hour12:false})}
+
+function tick(){
+  document.getElementById("clock").textContent=
+    new Date().toLocaleTimeString("th-TH",{hour12:false});
+}
 
 render();
 loadResults();
 tick();
 setInterval(tick,1000);
-setInterval(loadResults,30000);
+setInterval(loadResults,15000);
 </script>
 </body>
 </html>
