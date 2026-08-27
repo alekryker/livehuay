@@ -8,10 +8,15 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: live-lottery-update
+  cancel-in-progress: true
+
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 12
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,8 +25,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: npm
 
-      - name: Fetch results
+      - name: Create package file
+        run: |
+          if [ ! -f package.json ]; then
+            npm init -y
+          fi
+
+      - name: Install Playwright
+        run: npm install playwright@1.55.0
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Fetch live results
         run: node scraper.js
 
       - name: Commit results.json
