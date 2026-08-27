@@ -1,6 +1,69 @@
 {
-  "updatedAt": "2026-08-27T15:00:00.000Z",
-  "successCount": 0,
+  "updatedAt": "2026-08-27T15:35:21.115Z",
+  "successCount": 1,
   "total": 10,
-  "results": {}
+  "results": {
+    "lao_extra": {
+      "type": "lotto",
+      "source": "https://laoextra.com/",
+      "ok": false,
+      "error": "ไม่พบเลข 5 หลัก"
+    },
+    "nikkei_vip": {
+      "type": "stock",
+      "source": "https://stocks-vip.com/",
+      "ok": false,
+      "error": "ไม่พบค่าดัชนี"
+    },
+    "nikkei_morning": {
+      "type": "stock",
+      "value": "37,086.26",
+      "display": "37,086.26",
+      "change": "-2.38",
+      "source": "https://indexes.nikkei.co.jp/en/nkave",
+      "ok": true
+    },
+    "hanoi_asean": {
+      "type": "lotto",
+      "source": "https://hanoiasean.com/",
+      "ok": false,
+      "error": "ไม่พบเลข 5 หลัก"
+    },
+    "china_vip": {
+      "type": "stock",
+      "source": "https://shenzhenindex.com/",
+      "ok": false,
+      "error": "ไม่พบค่าดัชนี"
+    },
+    "china_morning": {
+      "type": "stock",
+      "source": "http://www.szse.cn/English/index.html",
+      "ok": false,
+      "error": "fetch failed"
+    },
+    "lao_tv": {
+      "type": "lotto",
+      "source": "https://lao-tv.com/",
+      "ok": false,
+      "error": "ไม่พบเลข 5 หลัก"
+    },
+    "hangseng_vip": {
+      "type": "stock",
+      "source": "https://hangsengvip.com/",
+      "ok": false,
+      "error": "fetch failed"
+    },
+    "hangseng_morning": {
+      "type": "stock",
+      "source": "https://www.hsi.com.hk/eng",
+      "ok": false,
+      "error": "ไม่พบค่าดัชนี"
+    },
+    "hanoi_hd": {
+      "type": "lotto",
+      "source": "https://xosohd.com/",
+      "ok": false,
+      "error": "ไม่พบเลข 5 หลัก"
+    }
+  }
 }
