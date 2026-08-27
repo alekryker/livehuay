@@ -1,6 +1,123 @@
 {
-  "updatedAt": "2026-08-27T15:00:00.000Z",
-  "successCount": 0,
+  "updatedAt": "2026-08-27T16:00:47.895Z",
+  "successCount": 10,
   "total": 10,
-  "results": {}
+  "results": {
+    "lao_extra": {
+      "type": "lotto",
+      "value": "56766",
+      "display": "56766",
+      "three": "766",
+      "two": "56",
+      "source": "https://laoextra.com/",
+      "finalUrl": "https://laoextra.com/",
+      "method": "browser",
+      "ok": true
+    },
+    "nikkei_vip": {
+      "type": "stock",
+      "value": "58,237.46",
+      "display": "58,237.46",
+      "change": "+125.68 (+0.22%)",
+      "three": "237",
+      "two": "46",
+      "source": "https://stocks-vip.com/",
+      "finalUrl": "https://stocks-vip.com/",
+      "method": "browser",
+      "ok": true
+    },
+    "nikkei_morning": {
+      "type": "stock",
+      "value": "66,131.98",
+      "display": "66,131.98",
+      "change": "-130.18",
+      "three": "131",
+      "two": "98",
+      "source": "https://indexes.nikkei.co.jp/en/nkave",
+      "finalUrl": "https://indexes.nikkei.co.jp/en/nkave",
+      "method": "browser",
+      "ok": true
+    },
+    "hanoi_asean": {
+      "type": "lotto",
+      "value": "25770",
+      "display": "25770",
+      "three": "770",
+      "two": "34",
+      "source": "https://hanoiasean.com/",
+      "finalUrl": "https://hanoiasean.com/",
+      "method": "browser",
+      "ok": true
+    },
+    "china_vip": {
+      "type": "stock",
+      "value": "32460.20",
+      "display": "32460.20",
+      "change": "",
+      "three": "460",
+      "two": "20",
+      "source": "https://shenzhenindex.com/",
+      "finalUrl": "https://shenzhenindex.com/",
+      "method": "browser",
+      "ok": true
+    },
+    "china_morning": {
+      "type": "stock",
+      "value": "14048.88",
+      "display": "14048.88",
+      "change": "-08",
+      "three": "048",
+      "two": "88",
+      "source": "https://www.szse.cn/English/index.html",
+      "finalUrl": "https://www.szse.cn/English/index.html",
+      "method": "browser",
+      "ok": true
+    },
+    "lao_tv": {
+      "type": "lotto",
+      "value": "37459",
+      "display": "37459",
+      "three": "459",
+      "two": "37",
+      "source": "https://lao-tv.com/",
+      "finalUrl": "https://lao-tv.com/",
+      "method": "browser",
+      "ok": true
+    },
+    "hangseng_vip": {
+      "type": "stock",
+      "value": "25,565.74",
+      "display": "25,565.74",
+      "change": "+54.64",
+      "three": "565",
+      "two": "74",
+      "source": "https://hangsengvip.com/",
+      "method": "yahoo-fallback",
+      "warning": "page.goto: net::ERR_NAME_NOT_RESOLVED at https://hangsengvip.com/\nCall log:\n  - navigating to \"https://hangsengvip.com/\", waiting until \"domcontentloaded\"\n",
+      "ok": true
+    },
+    "hangseng_morning": {
+      "type": "stock",
+      "value": "25,565.74",
+      "display": "25,565.74",
+      "change": "-87.23",
+      "three": "565",
+      "two": "74",
+      "source": "https://www.hsi.com.hk/eng/",
+      "finalUrl": "https://www.hsi.com.hk/eng",
+      "method": "browser",
+      "ok": true
+    },
+    "hanoi_hd": {
+      "type": "lotto",
+      "value": "43658",
+      "display": "43658",
+      "three": "658",
+      "two": "83",
+      "source": "https://xosohd.com/",
+      "finalUrl": "https://xosohd.com/",
+      "method": "browser",
+      "ok": true
+    }
+  }
 }
