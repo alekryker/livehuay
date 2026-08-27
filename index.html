@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#780000">
+<title>ไลฟ์สด กระดานเช้า</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(#4b0000,#1c0000);font-family:Prompt,sans-serif;color:#fff}
+.page{max-width:1600px;margin:auto;padding:10px}
+.header{background:linear-gradient(#8b0000,#c40000,#680000);border:2px solid #ff5252;border-radius:18px;padding:12px;box-shadow:0 0 16px #f00}
+.hero{display:flex;align-items:center;justify-content:center;gap:15px}
+.live{background:#d60000;border:2px solid #ff9999;border-radius:16px;padding:8px 16px;font-size:26px;font-weight:900}
+h1{margin:0;font-size:clamp(36px,5vw,72px);font-weight:900;text-shadow:0 0 12px #f00}
+h1 span{color:#ffd94a}
+.ticker{margin-top:8px;background:#9c0000;border:2px solid #ff5a5a;border-radius:999px;padding:7px 16px;text-align:center;font-weight:700;color:#fff}
+.status{display:flex;justify-content:space-between;gap:10px;margin:10px 4px;font-size:13px;color:#ffdada}
+.board{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.card{background:linear-gradient(#bd0000,#790000);border:2px solid #ff5555;border-radius:14px;padding:9px;box-shadow:0 0 10px rgba(255,0,0,.8)}
+.head{display:grid;grid-template-columns:56px 1fr;gap:8px;align-items:center}
+.flag{width:56px;height:56px;border-radius:10px;background:#fff;display:grid;place-items:center;font-size:35px}
+.name{font-size:clamp(17px,2vw,27px);font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag{color:#ffe34b}.time{font-size:12px;color:#ffdada}
+.screen{margin-top:8px;min-height:115px;background:#fff;border-radius:10px;color:#222;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px}
+.screen.blue{background:#075784;color:#fff}
+.small{font-size:11px;opacity:.7;text-align:center}
+.value{font-family:Arial,sans-serif;font-size:clamp(27px,3vw,44px);font-weight:700;text-align:center}
+.focus{display:inline-block;border:3px solid #d81818;padding:0 3px;background:rgba(255,255,255,.7);color:#222}
+.result{display:grid;grid-template-columns:1fr .72fr;gap:8px;margin-top:8px}
+.box{background:#fff;color:#111;border-radius:8px;min-height:52px;display:grid;place-items:center;font:900 clamp(24px,3vw,40px)/1 Arial,sans-serif}
+.box.done{color:#d00000}
+.source{display:block;text-align:center;margin-top:6px;font-size:10px;color:#ffd6d6;text-decoration:none}
+.footer{margin-top:12px;background:linear-gradient(#b60000,#650000);border:2px solid #ff5555;border-radius:14px;padding:8px 14px;display:grid;grid-template-columns:250px 1fr;gap:12px;align-items:center}
+.clock{background:#fff;color:#222;border-radius:8px;padding:8px;text-align:center;font:800 40px Arial,sans-serif}
+.msg{font-size:clamp(15px,2vw,27px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:1100px){.board{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.board{grid-template-columns:repeat(2,1fr);gap:7px}.page{padding:6px}.header{padding:8px}.live{font-size:14px;padding:6px 10px}h1{font-size:30px}.head{grid-template-columns:42px 1fr}.flag{width:42px;height:42px;font-size:27px}.name{font-size:15px}.screen{min-height:88px}.value{font-size:26px}.box{min-height:42px;font-size:24px}.footer{grid-template-columns:1fr}.clock{font-size:30px}.msg{text-align:center;font-size:12px}}
+</style>
+</head>
+<body>
+<main class="page">
+<section class="header">
+  <div class="hero"><div class="live">▶ LIVE</div><h1><span>ไลฟ์สด</span> กระดานเช้า</h1></div>
+  <div class="ticker">ลาว EXTRA / นิเคอิเช้า VIP / นิเคอิเช้า / ฮานอยอาเซียน / จีนเช้า VIP / จีนเช้า / ลาว TV / ฮั่งเส็งเช้า VIP / ฮั่งเส็งเช้า / ฮานอย HD</div>
+</section>
+
+<div class="status"><span id="status">กำลังโหลดผล...</span><span id="updated">-</span></div>
+<section class="board" id="board"></section>
+
+<footer class="footer">
+  <div class="clock" id="clock">00:00:00</div>
+  <div class="msg">❤️ ยินดีกับทุกท่านที่ถูกรางวัล</div>
+</footer>
+</main>
+
+<script>
+const INFO = {
+  lao_extra:{flag:"🇱🇦",name:"ลาว",tag:"Extra",close:"08:25",draw:"08:30"},
+  nikkei_vip:{flag:"🇯🇵",name:"นิเคอิเช้า",tag:"VIP",close:"09:00",draw:"09:05"},
+  nikkei_morning:{flag:"🇯🇵",name:"นิเคอิเช้า",tag:"",close:"09:25",draw:"09:30"},
+  hanoi_asean:{flag:"🌐",name:"ฮานอยอาเซียน",tag:"",close:"09:10",draw:"09:30"},
+  china_vip:{flag:"🇨🇳",name:"จีนเช้า",tag:"VIP",close:"10:00",draw:"10:05"},
+  china_morning:{flag:"🇨🇳",name:"จีนเช้า",tag:"",close:"10:20",draw:"10:30"},
+  lao_tv:{flag:"🇱🇦",name:"ลาว",tag:"TV",close:"10:25",draw:"10:30"},
+  hangseng_vip:{flag:"🇭🇰",name:"ฮั่งเส็งเช้า",tag:"VIP",close:"10:30",draw:"10:35"},
+  hangseng_morning:{flag:"🇭🇰",name:"ฮั่งเส็งเช้า",tag:"",close:"10:55",draw:"11:00"},
+  hanoi_hd:{flag:"🇻🇳",name:"ฮานอย",tag:"HD",close:"11:10",draw:"11:30"}
+};
+const ORDER = Object.keys(INFO);
+
+function last2(v){
+ const s=String(v||"");
+ if(!s)return "---";
+ if(s.length<3)return s;
+ return s.slice(0,-2)+'<span class="focus">'+s.slice(-2)+'</span>';
+}
+
+function render(data={}){
+ document.getElementById("board").innerHTML=ORDER.map(k=>{
+   const i=INFO[k], r=data[k]||{}, three=r.three||"XXX", two=r.two||"XX";
+   return `<article class="card">
+     <div class="head">
+       <div class="flag">${i.flag}</div>
+       <div><div class="name">${i.name}<span class="tag">${i.tag}</span></div><div class="time">ปิด ${i.close} · ออก ${i.draw} น.</div></div>
+     </div>
+     <div class="screen ${k==="nikkei_vip"?"blue":""}">
+       <div class="small">${r.ok ? "ข้อมูลล่าสุดจากเว็บต้นทาง" : "รอผล / กำลังอัปเดต"}</div>
+       <div class="value">${last2(r.display||r.value||"")}</div>
+       <div class="small">${r.change||""}</div>
+     </div>
+     <div class="result">
+       <div class="box ${three!=="XXX"?"done":""}">${three}</div>
+       <div class="box ${two!=="XX"?"done":""}">${two}</div>
+     </div>
+     <a class="source" target="_blank" rel="noopener" href="${r.source||"#"}">ดูเว็บต้นทาง ↗</a>
+   </article>`;
+ }).join("");
+}
+
+async function loadResults(){
+ try{
+   const r=await fetch("./results.json?ts="+Date.now(),{cache:"no-store"});
+   if(!r.ok)throw new Error("results.json");
+   const j=await r.json();
+   render(j.results||{});
+   document.getElementById("status").textContent=`อัปเดตสำเร็จ ${j.successCount||0}/${j.total||10} แหล่ง`;
+   document.getElementById("updated").textContent="ข้อมูล "+new Date(j.updatedAt).toLocaleString("th-TH");
+ }catch(e){
+   document.getElementById("status").textContent="ยังไม่มี results.json หรือกำลังอัปเดต";
+ }
+}
+function tick(){document.getElementById("clock").textContent=new Date().toLocaleTimeString("th-TH",{hour12:false})}
+
+render();
+loadResults();
+tick();
+setInterval(tick,1000);
+setInterval(loadResults,30000);
+</script>
+</body>
+</html>
