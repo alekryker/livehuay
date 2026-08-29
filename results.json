@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-29T03:50:03.145Z",
-  "successCount": 9,
+  "updatedAt": "2026-08-29T10:31:14.235Z",
+  "successCount": 10,
   "total": 10,
   "results": {
     "lao_extra": {
@@ -16,11 +16,11 @@
     },
     "nikkei_vip": {
       "type": "stock",
-      "value": "58,319.00",
-      "display": "58,319.00",
-      "change": "+4.20 (+0.01%)",
-      "three": "319",
-      "two": "00",
+      "value": "58,235.83",
+      "display": "58,235.83",
+      "change": "-78.84 (-0.14%)",
+      "three": "235",
+      "two": "83",
       "source": "https://stocks-vip.com/",
       "finalUrl": "https://stocks-vip.com/",
       "method": "browser",
@@ -51,11 +51,11 @@
     },
     "china_vip": {
       "type": "stock",
-      "value": "32524.16",
-      "display": "32524.16",
-      "change": "-11.41",
-      "three": "524",
-      "two": "16",
+      "value": "32584.03",
+      "display": "32584.03",
+      "change": "",
+      "three": "584",
+      "two": "03",
       "source": "https://shenzhenindex.com/",
       "finalUrl": "https://shenzhenindex.com/",
       "method": "browser",
@@ -110,9 +110,14 @@
     },
     "hanoi_hd": {
       "type": "lotto",
+      "value": "56964",
+      "display": "56964",
+      "three": "964",
+      "two": "69",
       "source": "https://xosohd.com/",
-      "ok": false,
-      "error": "ไม่พบเลขผล 5 หลักหลัง render JavaScript"
+      "finalUrl": "https://xosohd.com/",
+      "method": "browser",
+      "ok": true
     }
   }
 }
