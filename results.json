@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-05T22:15:19.032Z",
+  "updatedAt": "2026-09-06T00:00:02.044Z",
   "successCount": 10,
   "total": 10,
   "results": {
@@ -16,11 +16,11 @@
     },
     "nikkei_vip": {
       "type": "stock",
-      "value": "58,039.09",
-      "display": "58,039.09",
-      "change": "-93.19 (-0.16%)",
-      "three": "039",
-      "two": "09",
+      "value": "8,075.66",
+      "display": "8,075.66",
+      "change": "-31.09",
+      "three": "075",
+      "two": "66",
       "source": "https://stocks-vip.com/",
       "finalUrl": "https://stocks-vip.com/",
       "method": "browser",
