@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-21T14:56:08.628Z",
+  "updatedAt": "2026-09-21T19:54:02.730Z",
   "successCount": 10,
   "total": 10,
   "results": {
@@ -63,14 +63,14 @@
     },
     "china_morning": {
       "type": "stock",
-      "value": "13,730.02",
-      "display": "13,730.02",
-      "change": "+89.15",
+      "value": "13730.02",
+      "display": "13730.02",
+      "change": "-09",
       "three": "730",
       "two": "02",
       "source": "https://www.szse.cn/English/index.html",
-      "method": "yahoo-fallback",
-      "warning": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://www.szse.cn/English/index.html\", waiting until \"domcontentloaded\"\n",
+      "finalUrl": "https://www.szse.cn/English/index.html",
+      "method": "browser",
       "ok": true
     },
     "lao_tv": {
