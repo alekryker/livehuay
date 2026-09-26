@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25T22:48:19.214Z",
+  "updatedAt": "2026-09-26T00:59:22.246Z",
   "successCount": 10,
   "total": 10,
   "results": {
@@ -16,11 +16,11 @@
     },
     "nikkei_vip": {
       "type": "stock",
-      "value": "57,605.37",
-      "display": "57,605.37",
-      "change": "+78.34 (+0.14%)",
-      "three": "605",
-      "two": "37",
+      "value": "57,629.07",
+      "display": "57,629.07",
+      "change": "+25.95 (+0.05%)",
+      "three": "629",
+      "two": "07",
       "source": "https://stocks-vip.com/",
       "finalUrl": "https://stocks-vip.com/",
       "method": "browser",
@@ -51,14 +51,14 @@
     },
     "china_vip": {
       "type": "stock",
-      "value": "32774.88",
-      "display": "32774.88",
-      "change": "-73.98",
-      "three": "774",
-      "two": "88",
+      "value": "13,316.97",
+      "display": "13,316.97",
+      "change": "-319.13",
+      "three": "316",
+      "two": "97",
       "source": "https://shenzhenindex.com/",
-      "finalUrl": "https://shenzhenindex.com/",
-      "method": "browser",
+      "method": "yahoo-fallback",
+      "warning": "ไม่พบค่าดัชนีหลัง render JavaScript",
       "ok": true
     },
     "china_morning": {
