@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-02T19:17:09.823Z",
+  "updatedAt": "2026-10-02T23:05:45.536Z",
   "successCount": 10,
   "total": 10,
   "results": {
@@ -104,8 +104,8 @@
       "three": "972",
       "two": "29",
       "source": "https://www.hsi.com.hk/eng/",
-      "method": "yahoo-fallback",
-      "warning": "ไม่พบค่าดัชนีหลัง render JavaScript",
+      "finalUrl": "https://www.hsi.com.hk/en-hk/home/",
+      "method": "browser",
       "ok": true
     },
     "hanoi_hd": {
