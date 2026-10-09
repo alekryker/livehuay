@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08T20:14:58.816Z",
+  "updatedAt": "2026-10-09T00:27:36.827Z",
   "successCount": 10,
   "total": 10,
   "results": {
@@ -16,10 +16,10 @@
     },
     "nikkei_vip": {
       "type": "stock",
-      "value": "57,624.98",
-      "display": "57,624.98",
-      "change": "+29.82 (+0.05%)",
-      "three": "624",
+      "value": "57,538.98",
+      "display": "57,538.98",
+      "change": "-86.23 (-0.15%)",
+      "three": "538",
       "two": "98",
       "source": "https://stocks-vip.com/",
       "finalUrl": "https://stocks-vip.com/",
@@ -28,11 +28,11 @@
     },
     "nikkei_morning": {
       "type": "stock",
-      "value": "69,042.11",
-      "display": "69,042.11",
-      "change": "-993.60",
-      "three": "042",
-      "two": "11",
+      "value": "68,286.87",
+      "display": "68,286.87",
+      "change": "-755.24",
+      "three": "286",
+      "two": "87",
       "source": "https://indexes.nikkei.co.jp/en/nkave",
       "finalUrl": "https://indexes.nikkei.co.jp/en/nkave",
       "method": "browser",
