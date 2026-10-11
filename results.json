@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-11T07:13:37.227Z",
+  "updatedAt": "2026-10-11T14:07:37.560Z",
   "successCount": 10,
   "total": 10,
   "results": {
@@ -51,11 +51,11 @@
     },
     "china_vip": {
       "type": "stock",
-      "value": "33173.52",
-      "display": "33173.52",
+      "value": "33208.13",
+      "display": "33208.13",
       "change": "",
-      "three": "173",
-      "two": "52",
+      "three": "208",
+      "two": "13",
       "source": "https://shenzhenindex.com/",
       "finalUrl": "https://shenzhenindex.com/",
       "method": "browser",
