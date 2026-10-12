@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-12T08:08:19.299Z",
+  "updatedAt": "2026-10-12T17:53:34.897Z",
   "successCount": 10,
   "total": 10,
   "results": {
@@ -86,10 +86,10 @@
     },
     "hangseng_vip": {
       "type": "stock",
-      "value": "24,249.20",
-      "display": "24,249.20",
-      "change": "+37.85",
-      "three": "249",
+      "value": "24,271.20",
+      "display": "24,271.20",
+      "change": "+59.85",
+      "three": "271",
       "two": "20",
       "source": "https://hangsengvip.com/",
       "method": "yahoo-fallback",
@@ -98,11 +98,11 @@
     },
     "hangseng_morning": {
       "type": "stock",
-      "value": "24,249.41",
-      "display": "24,249.41",
-      "change": "+38.06",
-      "three": "249",
-      "two": "41",
+      "value": "24,271.20",
+      "display": "24,271.20",
+      "change": "+59.85",
+      "three": "271",
+      "two": "20",
       "source": "https://www.hsi.com.hk/eng/",
       "finalUrl": "https://www.hsi.com.hk/en-hk/home/",
       "method": "browser",
