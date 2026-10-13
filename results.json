@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-13T20:23:47.091Z",
+  "updatedAt": "2026-10-13T23:49:05.030Z",
   "successCount": 10,
   "total": 10,
   "results": {
@@ -16,14 +16,14 @@
     },
     "nikkei_vip": {
       "type": "stock",
-      "value": "67,777.52",
-      "display": "67,777.52",
-      "change": "-1253.40",
-      "three": "777",
-      "two": "52",
+      "value": "57,377.07",
+      "display": "57,377.07",
+      "change": "-44.76 (-0.08%)",
+      "three": "377",
+      "two": "07",
       "source": "https://stocks-vip.com/",
-      "method": "yahoo-fallback",
-      "warning": "ไม่พบค่าดัชนีหลัง render JavaScript",
+      "finalUrl": "https://stocks-vip.com/",
+      "method": "browser",
       "ok": true
     },
     "nikkei_morning": {
