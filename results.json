@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-19T06:59:31.325Z",
+  "updatedAt": "2026-10-19T14:36:12.549Z",
   "successCount": 10,
   "total": 10,
   "results": {
@@ -51,11 +51,11 @@
     },
     "china_vip": {
       "type": "stock",
-      "value": "33113.64",
-      "display": "33113.64",
+      "value": "33120.41",
+      "display": "33120.41",
       "change": "",
-      "three": "113",
-      "two": "64",
+      "three": "120",
+      "two": "41",
       "source": "https://shenzhenindex.com/",
       "finalUrl": "https://shenzhenindex.com/",
       "method": "browser",
@@ -63,11 +63,11 @@
     },
     "china_morning": {
       "type": "stock",
-      "value": "11819.18",
-      "display": "11819.18",
+      "value": "11817.42",
+      "display": "11817.42",
       "change": "-10",
-      "three": "819",
-      "two": "18",
+      "three": "817",
+      "two": "42",
       "source": "https://www.szse.cn/English/index.html",
       "finalUrl": "https://www.szse.cn/English/index.html",
       "method": "browser",
